@@ -1,2 +1,2 @@
-# _WeApp
-存放自己模仿开发的小程序
+# WeApp quietweather
+进行天气查询
