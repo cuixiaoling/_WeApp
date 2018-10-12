@@ -1,35 +1,50 @@
 <template>
-  <div class="container" @click="clickHandle('test click', $event)">
-
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
-      </div>
-    </div>
-
-    <div class="usermotto">
-      <div class="user-motto">
-        <card :text="motto"></card>
-      </div>
-    </div>
-
-    <form class="form-container">
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>
-    <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
+  <div class="container">
+    <image class='bcg' src="../../img/beach-bird-birds-235787.jpg" mode='aspectFill'></image>
   </div>
 </template>
-
 <script>
 import card from '@/components/card'
-
 export default {
   data () {
     return {
       motto: 'Hello World',
-      userInfo: {}
+      userInfo: {},
+      weatherData:'555',
+      bcgImgList: [
+      {
+        src: '/img/beach-bird-birds-235787.jpg',
+        topColor: '#393836'
+      },
+      {
+        src: '/img/clouds-forest-idyllic-417102.jpg',
+        topColor: '#0085e5'
+      },
+      {
+        src: '/img/backlit-dawn-dusk-327466.jpg',
+        topColor: '#2d2225'
+      },
+      {
+        src: '/img/accomplishment-adventure-clear-sky-585825.jpg',
+        topColor: '#004a89'
+      },
+      {
+        src: '/img/fog-himalayas-landscape-38326.jpg',
+        topColor: '#b8bab9'
+      },
+      {
+        src: '/img/asphalt-blue-sky-clouds-490411.jpg',
+        topColor: '#009ffe'
+      },
+      {
+        src: '/img/aerial-climate-cold-296559.jpg',
+        topColor: '#d6d1e6'
+      },
+      {
+        src: '/img/beautiful-cold-dawn-547115.jpg',
+        topColor: '#ffa5bc'
+      }
+    ],
     }
   },
 
@@ -38,6 +53,13 @@ export default {
   },
 
   methods: {
+    initFun(){},
+    setNavigationBarColor(color){
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#393836',
+      })
+    },
     bindViewTap () {
       const url = '../logs/main'
       wx.navigateTo({ url })
@@ -62,44 +84,28 @@ export default {
   created () {
     // 调用应用实例的方法获取全局数据
     this.getUserInfo()
+    this.initFun()
+    this.setNavigationBarColor();
   }
 }
 </script>
 
 <style scoped>
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container{
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  color:#fff;
+  font-size:30rpx
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 150px;
-}
-
-.form-control {
-  display: block;
-  padding: 0 12px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
-
-.counter {
-  display: inline-block;
-  margin: 10px auto;
-  padding: 5px 10px;
-  color: blue;
-  border: 1px solid blue;
+.bcg{
+  position:fixed;
+  z-index:2;
+  height:100%;
+  width:100%;
+  top:-20px;
+  right:0;
+  bottom:0;
+  left:0;
 }
 </style>
