@@ -103,7 +103,7 @@ export default {
   z-index:2;
   height:100%;
   width:100%;
-  top:-20px;
+  top:0px;
   right:0;
   bottom:0;
   left:0;
