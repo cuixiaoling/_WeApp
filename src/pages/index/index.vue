@@ -300,6 +300,6 @@ export default {
   z-index:3;
 }
 .menu_sty{
-
+  /*  */
 }
 </style>
