@@ -41,7 +41,10 @@
     <div class="footer">开发者：cxl</div>
     <!-- 右侧点击图标 -->
     <div class="menu_sty">
-      <img src="/static/menu.png" style="height:40px;width:40px;"/>
+      <img src="/static/location.png" :animation="animationOne"  bindtap="menuOne" style="height:40px;width:40px;right:70rpx;bottom:150rpx; position:fixed;z-index:2;opacity: 0;"/>
+      <img src="/static/setting.png" :animation="animationTwo" bindtap="menuTwo" style="height:40px;width:40px;right:70rpx;bottom:150rpx; position:fixed;z-index:2; opacity: 0;"/>
+      <img src="/static/info.png" :animation="animationThree" bindtap="menuThree" style="height:40px;width:40px;right:70rpx;bottom:150rpx; position:fixed;z-index:2; opacity: 0;"/>
+      <img @click="menuMain" :animation="animationMain" src="/static/menu.png" style="height:40px;width:40px; right:70rpx;bottom:150rpx; position:fixed;z-index:2;"/>
     </div>
   </div>
 </template>
@@ -53,6 +56,13 @@ export default {
       motto: 'Hello World',
       userInfo: {},
       weatherData:'555',
+      show:false,
+      // 是否已经弹出
+      hasPopped: false,
+      animationMain: {},
+      animationOne: {},
+      animationTwo: {},
+      animationThree: {},
       bcgImgList: [
       {
         src: '/img/beach-bird-birds-235787.jpg',
@@ -101,31 +111,79 @@ export default {
         backgroundColor: '#b8bab9',
       })
     },
-    bindViewTap () {
-      const url = '../logs/main'
-      wx.navigateTo({ url })
+    // 点击主菜单
+    menuMain(){
+      this.show = true;
+      if(this.hasPopped){
+        this.takeback()
+      }
+      else
+      {
+          this.popp()
+      }
     },
-    getUserInfo () {
-      // 调用登录接口
-      wx.login({
-        success: () => {
-          wx.getUserInfo({
-            success: (res) => {
-              this.userInfo = res.userInfo
-            }
-          })
-        }
+
+    // 弹出子菜单
+    popp(){
+      let animationMain = wx.createAnimation({
+        duration: 200,
+        timingFunction: 'ease-out'
       })
+      let animationOne = wx.createAnimation({
+        duration: 200,
+        timingFunction: 'ease-out'
+      })
+      let animationTwo = wx.createAnimation({
+        duration: 200,
+        timingFunction: 'ease-out'
+      })
+      let animationThree = wx.createAnimation({
+        duration: 200,
+        timingFunction: 'ease-out'
+      })
+      animationMain.rotateZ(180).step()
+      animationOne.translate(-50, -60).rotateZ(360).opacity(1).step()
+      animationTwo.translate(-90, 0).rotateZ(360).opacity(1).step()
+      animationThree.translate(-50, 60).rotateZ(360).opacity(1).step()
+      this.animationMain=animationMain.export()
+      this.animationOne=animationOne.export()
+      this.animationTwo=animationTwo.export()
+      this.animationThree=animationThree.export()
+      this.hasPopped =true;
+
     },
-    clickHandle (msg, ev) {
-      console.log('clickHandle:', msg, ev)
+    // 收回子菜单
+    takeback(){
+      let animationMain = wx.createAnimation({
+        duration: 200,
+        timingFunction: 'ease-out'
+      })
+      let animationOne = wx.createAnimation({
+        duration: 200,
+        timingFunction: 'ease-out'
+      })
+      let animationTwo = wx.createAnimation({
+        duration: 200,
+        timingFunction: 'ease-out'
+      })
+      let animationThree = wx.createAnimation({
+        duration: 200,
+        timingFunction: 'ease-out'
+      })
+      animationMain.rotateZ(0).step();
+      animationOne.translate(0, 0).rotateZ(0).opacity(0).step()
+      animationTwo.translate(0, 0).rotateZ(0).opacity(0).step()
+      animationThree.translate(0, 0).rotateZ(0).opacity(0).step()
+      this.animationMain=animationMain.export()
+      this.animationOne=animationOne.export()
+      this.animationTwo=animationTwo.export()
+      this.animationThree=animationThree.export()
+      this.hasPopped =false;
     }
   },
 
   created () {
     // 调用应用实例的方法获取全局数据
-    this.getUserInfo()
-    this.initFun()
     this.setNavigationBarColor();
   }
 }
@@ -242,10 +300,6 @@ export default {
   z-index:3;
 }
 .menu_sty{
-position:fixed;
-right:70rpx;
-bottom:150rpx;
-z-index:100;
 
 }
 </style>

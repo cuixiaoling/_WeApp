@@ -2,6 +2,8 @@
   "pages": [
     "pages/index/main",
     "pages/logs/main",
+    "pages/animation/main",
+    "pages/aa/main",
     "pages/counter/main"
   ],
   "window": {

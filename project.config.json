@@ -21,13 +21,36 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "counter",
+					"pathName": "pages/counter/main",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "动画-小程序",
+					"pathName": "pages/animation/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "aa",
+					"pathName": "pages/aa/main",
+					"query": ""
+				}
+			]
 		}
 	}
 }

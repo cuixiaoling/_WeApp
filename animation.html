@@ -1,0 +1,95 @@
+<!-- 1 -->
+<style>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+</style>
+<div id="demo">
+    <button v-on:click="show = !show">
+        Toggle
+    </button>
+    <transition name="fade">
+        <p v-if="show">hello</p>
+    </transition>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#demo',
+        data: {
+            show: true
+        }
+    })
+</script>
+
+<!-- 2 -->
+<style>
+    /* 可以设置不同的进入和离开动画 */
+    /* 设置持续时间和动画函数 */
+    .slide-fade-enter-active {
+    transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to{
+    transform: translateX(10px);
+    opacity: 0;
+    }
+</style>
+<div id="example-1">
+    <button @click="show = !show">
+        Toggle render
+    </button>
+    <transition name="slide-fade">
+        <p v-if="show">hello</p>
+    </transition>
+</div>
+<script>
+    new Vue({
+            el: '#example-1',
+            data: {
+                show: true
+            }
+        })
+</script>
+
+<!-- 3 -->
+<style>
+    .bounce-enter-active {
+    animation: bounce-in .5s;
+    }
+    .bounce-leave-active {
+    animation: bounce-in .5s reverse;
+    }
+    @keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+    }
+</style>
+<div id="example-2">
+    <button @click="show = !show">Toggle show</button>
+    <transition name="bounce">
+        <p v-if="show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum
+            id. Pellentesque habitant morbi tristique senectus et netus.</p>
+    </transition>
+</div>
+<script>
+    new Vue({
+            el: '#example-2',
+            data: {
+                show: true
+            }
+        })
+</script>
+<!-- mpvue 不认识 transition 所以不能用vue的动画 -->
