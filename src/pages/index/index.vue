@@ -109,6 +109,7 @@ export default {
       wx.setNavigationBarColor({
         frontColor: '#ffffff',
         backgroundColor: '#b8bab9',
+        navigationBarTitleText:'关于'
       })
     },
     // 点击主菜单

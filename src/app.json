@@ -4,6 +4,7 @@
     "pages/logs/main",
     "pages/animation/main",
     "pages/aa/main",
+    "pages/about/main",
     "pages/counter/main"
   ],
   "window": {
