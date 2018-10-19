@@ -5,6 +5,7 @@
     "pages/animation/main",
     "pages/aa/main",
     "pages/about/main",
+    "pages/setting/main",
     "pages/counter/main"
   ],
   "window": {

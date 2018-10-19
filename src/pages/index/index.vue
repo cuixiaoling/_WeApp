@@ -41,10 +41,10 @@
     <div class="footer">开发者：cxl</div>
     <!-- 右侧点击图标 -->
     <div class="menu_sty">
-      <img src="/static/location.png" :animation="animationOne"  bindtap="menuOne" style="height:40px;width:40px;right:70rpx;bottom:150rpx; position:fixed;z-index:2;opacity: 0;"/>
-      <img src="/static/setting.png" :animation="animationTwo" bindtap="menuTwo" style="height:40px;width:40px;right:70rpx;bottom:150rpx; position:fixed;z-index:2; opacity: 0;"/>
-      <img src="/static/info.png" :animation="animationThree" bindtap="menuThree" style="height:40px;width:40px;right:70rpx;bottom:150rpx; position:fixed;z-index:2; opacity: 0;"/>
-      <img @click="menuMain" :animation="animationMain" src="/static/menu.png" style="height:40px;width:40px; right:70rpx;bottom:150rpx; position:fixed;z-index:2;"/>
+      <img src="/static/location.png" :animation="animationOne"  bindtap="menuOne" class="pos_icon opcition0"/>
+      <img src="/static/setting.png" :animation="animationTwo" bindtap="menuTwo" class="pos_icon opcition0"/>
+      <img src="/static/info.png" :animation="animationThree" bindtap="menuThree" class="pos_icon opcition0"/>
+      <img @click="menuMain" :animation="animationMain" src="/static/menu.png" class="pos_icon"/>
     </div>
   </div>
 </template>
@@ -109,8 +109,8 @@ export default {
       wx.setNavigationBarColor({
         frontColor: '#ffffff',
         backgroundColor: '#b8bab9',
-        navigationBarTitleText:'关于'
       })
+     
     },
     // 点击主菜单
     menuMain(){
@@ -300,7 +300,15 @@ export default {
   color:#fff;
   z-index:3;
 }
-.menu_sty{
-
+.pos_icon{
+  height:40px;
+  width:40px;
+  right:70rpx;
+  bottom:150rpx; 
+  position:fixed;
+  z-index:2;
+}
+.opcition0{
+  opacity:0;
 }
 </style>
