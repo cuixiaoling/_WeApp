@@ -14,9 +14,6 @@ export default {
 
   methods: {
     initFun(){
-      // wx.setNavigationBarColor({
-      //   backgroundColor: '#ffa5bc',
-      // })
        wx.setNavigationBarTitle({
         title:'设置'
       })
