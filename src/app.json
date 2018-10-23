@@ -11,7 +11,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#40a7e7",
-    "navigationBarTitleText": "Quiet Weather — 安静天气",
+    "navigationBarTitleText": "mpvue-和风天气",
     "navigationBarTextStyle": "light"
   }
 }
