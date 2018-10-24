@@ -32,7 +32,7 @@
           <div>{{item.wind_dir}}</div>
         </div>
       </div>
-      <div class="livingIndex" v-if="!!hiddenIndex">
+      <div class="livingIndex" v-if="!!setting.hiddenIndex">
         <div class="item" v-for="(item,index) in cityDatas.lifestyle" :key="index" v-bind:style="{ 'border': index+1==5 ? '0':''}">
           <img src='/static/lifestyle_ac.png' class="icon"/>
           <div class="right">
@@ -153,6 +153,7 @@ export default {
       wx.navigateTo({
         url:'../setting/main'
       })
+      this.takeback();
     },
     searchFun:function(){
       console.log('vue-失去焦点')
