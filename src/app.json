@@ -4,12 +4,14 @@
     "pages/logs/main",
     "pages/animation/main",
     "pages/aa/main",
+    "pages/about/main",
+    "pages/setting/main",
     "pages/counter/main"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#40a7e7",
-    "navigationBarTitleText": "Quiet Weather — 安静天气",
+    "navigationBarTitleText": "mpvue-和风天气",
     "navigationBarTextStyle": "light"
   }
 }
