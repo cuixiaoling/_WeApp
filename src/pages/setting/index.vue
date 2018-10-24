@@ -5,12 +5,12 @@
             自定义
           </div>
           <div class="content">
-            <div>打开顶部城市天气快捷搜索</div>
-            <switch color='#40a7e7' bindchange='switchChange' data-switchparam='hiddenSearch'></switch>
+            <div>打开顶部城市天气快捷搜索{{!!setting.hiddenSearch}}</div>
+            <switch color='#40a7e7' :checked='!!setting.hiddenSearch' @change='switchChange' data-switchparam='hiddenSearch'></switch>
           </div>
           <div class="content">
             <div>显示生活指数信息</div>
-            <switch color='#40a7e7' bindchange='switchChange' data-switchparam='hiddenSearch'></switch>
+            <switch color='#40a7e7' :checked='!!setting.hiddenIndex' @change='switchChange' data-switchparam='hiddenIndex'></switch>
           </div>
         </div>
         <div class="unit">
@@ -20,7 +20,7 @@
               <div>打开首页更新信息</div>
               <div style="font-size:22rpx;color:#999;">在首页检测到新版本，会提示更新</div>
             </div>
-            <switch color='#40a7e7' bindchange='switchChange' data-switchparam='hiddenSearch'></switch>
+            <switch color='#40a7e7' :checked="!!setting.forceUpdate" @change='switchChange' data-switchparam="forceUpdate"></switch>
           </div>
       </div>
       <div class="unit">
@@ -41,7 +41,7 @@
         <div class="content pl20">
           <div style="width:100%">
             <div>设置屏幕亮度</div>
-            <slider min='0' max='100' step='1' block-size='12' block-color='#40a7e7' activeColor='#40a7e7' show-value='true' bindchange='screenBrightnessChanging' bindchanging='screenBrightnessChanging'></slider>
+            <slider min='0' max='100' step='1' block-size='12' block-color='#40a7e7' activeColor='#40a7e7' show-value='true' @change='screenBrightnessChanging' bindchanging='screenBrightnessChanging'></slider>
           </div>
         </div>
         <div class="content pl20">
@@ -49,7 +49,7 @@
               <div>保持亮度</div>
               <div style="font-size:22rpx;color:#999;">仅在当前小程序、当次生效、离开小程序后设置失效</div>
             </div>
-            <switch color='#40a7e7' bindchange='switchChange' data-switchparam='hiddenSearch'></switch>
+            <switch color='#40a7e7' :checked:="!!keepscreenon" @change='switchChange' data-switchparam="keepscreenon"></switch>
           </div>
         <div style="color:#40a7e7;font-size:28rpx;">系统信息</div>
         <div class="content">
@@ -86,14 +86,42 @@
 </template>
 <script>
 export default {
+  data(){
+    return{
+      setting:{}
+    }
+  },
   methods:{
+    initSetting(){
+      wx.getStorage({
+        key:'setting',
+        success:(res)=>{
+          let setting = res.data || {}
+          this.setting = setting;
+        },
+        fail:()=>{
+          this.setting = {}
+        }
+      })
+    },
     initFun(){
       wx.setNavigationBarTitle({
       title: '设置'
-    })
-    }
+      })
+    },
+    switchChange(e) {
+      let dataset = e.currentTarget.dataset
+      let switchparam = dataset.switchparam
+      this.setting[switchparam] = (e.mp.detail || {}).value
+      console.log(this.setting.hiddenSearch)
+      wx.setStorage({
+        key: 'setting',
+        data: this.setting,
+      })
+    },
   },
   mounted(){
+    this.initSetting();
     this.initFun();
   }
 }
