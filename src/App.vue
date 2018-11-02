@@ -12,13 +12,9 @@ export default {
 </script>
 
 <style>
-page{
+Page{
   background:#f4f6f9;
-  -webkit-user-select:none;
-  user-select:none;
-  width:100%;
-  overflow-x:hidden;
-  height:100%;
+
 }
 /* this rule will be remove */
 * {
